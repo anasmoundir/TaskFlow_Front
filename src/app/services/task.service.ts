@@ -3,21 +3,24 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { Task } from '../models/task';
-import * as TaskActions from '../actions/task.actions';
+import * as TaskActions from '../store/actions/task.actions';
 import { v4 as uuid } from 'uuid';
+import { environment } from '../../envirements/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  private apiUrl = "";
+
+  apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private store: Store) {}
 
   getAllTasks(): Observable<Task[]> {
     this.store.dispatch(TaskActions.loadAllTasks());
-    return this.http.get<Task[]>(`${this.apiUrl}/api/tasks/all`);
+    return this.http.get<Task[]>(`${this.apiUrl}/api/tass/all`);
   }
 
   addTask(task: Task): Observable<Task> {

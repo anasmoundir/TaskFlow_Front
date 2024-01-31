@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import * as TaskActions from '../actions/task.actions';
-import { Task } from '../models/task';
+import { Task } from '../../models/task';
+import { AppState } from '../app.state';
 
 export const initialState: Task[] = [];
 
@@ -10,3 +11,7 @@ export const taskReducer = createReducer(
   on(TaskActions.addTask, (state, { task }) => [...state, task]),
   on(TaskActions.deleteTask, (state, { taskId }) => state.filter(task => task.id !== taskId)),
 );
+
+export function taskReducerWrapper(state: Task[] | undefined, action: any) {
+  return taskReducer(state, action);
+}

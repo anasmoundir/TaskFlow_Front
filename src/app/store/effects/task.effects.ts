@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import * as TaskActions from '../actions/task.actions';
-import { TaskService } from '../services/task.service';  // Import your task service
+import { TaskService } from '../../services/task.service';
 
 @Injectable()
 export class TaskEffects {
@@ -18,10 +18,9 @@ export class TaskEffects {
     )
   );
 
-  // Add other effects for addTask, markTaskAsDone, changeTask, consumeDeleteRequest, etc.
 
   constructor(
     private actions$: Actions,
-    private taskService: TaskService  // Inject your task service
+    private taskService: TaskService
   ) {}
 }

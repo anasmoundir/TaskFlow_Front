@@ -1,6 +1,7 @@
 <p>task-list works!</p>
-div *ngIf="tasks.length > 0">
-  <mat-card *ngFor="let task of tasks" class="task-card">
+
+<div *ngIf="tasks | async as tasksArray">
+  <mat-card *ngFor="let task of tasksArray" class="task-card">
     <mat-card-header>
       <mat-card-title>{{ task.description }}</mat-card-title>
       <mat-card-subtitle>Status: {{ task.taskStatus }}</mat-card-subtitle>
@@ -10,8 +11,11 @@ div *ngIf="tasks.length > 0">
       <p>Due Date: {{ task.dueDate | date: 'short' }}</p>
     </mat-card-content>
     <mat-card-actions>
+      <!-- Add any actions you want to include -->
     </mat-card-actions>
   </mat-card>
-<div *ngIf="tasks.length === 0">
+</div>
+
+<div *ngIf="(tasks | async)?.length === 0">
   No tasks available.
 </div>

@@ -6,5 +6,5 @@ export const initialState: any /* Set your initial state here */ = {};
 export const tokenReducer = createReducer(
   initialState,
   on(TokenActions.loadTokensSuccess, (state, { tokens }) => ({ ...state, tokens })),
-  // Handle other actions...
+
 );
