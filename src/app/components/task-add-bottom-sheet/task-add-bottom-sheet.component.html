@@ -1,0 +1,65 @@
+<form id="form" [formGroup]="addForm" (ngSubmit)="saveTask()" class="custom-form">
+  <div class="form-header">
+    <h2>Add New Task</h2>
+  </div>
+
+  <div class="form-body">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Title</mat-label>
+      <input type="text" matInput formControlName="title" placeholder="Enter title">
+      <mat-error *ngIf="addForm.get('title')">Title is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" placeholder="Enter description"></textarea>
+      <mat-error *ngIf="addForm.get('description')">Description is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Priority</mat-label>
+      <mat-select formControlName="priority" placeholder="Select priority">
+        <mat-option value="HIGH">High</mat-option>
+        <mat-option value="MEDIUM">Medium</mat-option>
+        <mat-option value="LOW">Low</mat-option>
+      </mat-select>
+      <mat-error *ngIf="addForm.get('priority')">Priority is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Assign Date</mat-label>
+      <input type="date" matInput formControlName="assignDate">
+      <mat-error *ngIf="addForm.get('assignDate')">Assign Date is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Due Date</mat-label>
+      <input type="date" matInput formControlName="dueDate">
+      <mat-error *ngIf="addForm.get('dueDate')">Due Date is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Assign To</mat-label>
+      <mat-select formControlName="assignTo" placeholder="Select assignee">
+        <mat-option *ngFor="let user of users$ | async" [value]="user">{{ user.username }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="addForm.get('assignTo')">Assign To is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Tags</mat-label>
+      <mat-select formControlName="tags" placeholder="Select tags" multiple>
+        <mat-option *ngFor="let tag of tags$ | async" [value]="tag">{{ tag.name }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="addForm.get('tags')">Tags is required</mat-error>
+    </mat-form-field>
+
+    <div *ngIf="(errorResponse$ | async)?.message" class="error-message">
+      {{ (errorResponse$ | async)?.message }}
+    </div>
+  </div>
+
+  <div class="form-footer">
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+  </div>
+</form>

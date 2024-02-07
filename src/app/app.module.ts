@@ -1,51 +1,49 @@
-import { NgModule, isDevMode } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { TaskListComponent } from './components/task-list/task-list.component';
-import { TaskDetailComponent } from './components/task-detail/task-detail.component';
-import { TokenListComponent } from './components/token-list/token-list.component';
-import { UserListComponent } from './components/user-list/user-list.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from "@angular/material/card";
-import { taskReducer } from './store/reducers/task.reducer';
-import { TaskEffects } from './store/effects/task.effects';
-import { tokenReducer } from './store/reducers/token.reducer';
-import { TokenEffects } from './store/effects/token.effects';
-import { userReducer } from './store/reducers/user.reducer';
-import { UserEffects } from './store/effects/user.effects';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { HttpClientModule } from '@angular/common/http';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import { MatIconModule } from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {MatButtonModule} from "@angular/material/button";
+import {TagModule} from "./tag/tag.module";
+import {HttpClientModule} from "@angular/common/http";
+import {UserModule} from "./user/user.module";
+import {SharedModule} from "./shared/shared.module";
+import {TaskModule} from "./task/task.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TaskListComponent,
-    TaskDetailComponent,
-    TokenListComponent,
-    UserListComponent,
-    NavbarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    EffectsModule.forRoot([TaskEffects, TokenEffects, UserEffects]),
-    StoreModule.forRoot({
-      task: taskReducer,
-      token: tokenReducer,
-      user: userReducer,
-    }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatToolbarModule,
     HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({maxAge: 25}),
+    TagModule,
+    UserModule,
+    TaskModule,
+    SharedModule,
+    MatToolbarModule,
+    MatListModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

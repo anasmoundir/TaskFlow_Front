@@ -1,0 +1,16 @@
+<mat-card class="task-card" *ngIf="task$ | async as task">
+  <mat-card-header>
+    <mat-card-title>{{ task.title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ task.description }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-icon-button color="primary" (click)="openUpdateTaskBottomSheet()">
+      edit
+    </button>
+    <button mat-icon-button color="warn" (click)="deleteTask()">
+      delete
+    </button>
+  </mat-card-actions>
+</mat-card>

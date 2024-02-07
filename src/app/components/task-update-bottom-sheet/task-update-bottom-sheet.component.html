@@ -1,0 +1,19 @@
+  <form id="update-status-form" [formGroup]="updateStatusForm" (ngSubmit)="updateTaskStatus()" class="custom-form">
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" color="primary">
+          <mat-option *ngFor="let status of statusList" [value]="status">{{ status }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="updateStatusForm.get('status')">Please select a status</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="(errorResponse$ | async)?.message" class="error-message">
+      {{ (errorResponse$ | async)?.message }}
+    </div>
+
+    <div class="button-container">
+      <button type="submit" mat-raised-button color="primary">Update Status</button>
+    </div>
+  </form>

@@ -6,13 +6,10 @@ import { StoreModule as NgRxStoreModule, ActionReducerMap } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import * as fromTask from './reducers/task.reducer';
 
-// Import the app state
 import { AppState } from './app.state';
 
-// Combine reducers
 const reducers: ActionReducerMap<AppState> = {
   task: fromTask.taskReducerWrapper,
-  // Add other reducers as needed
 };
 
 @NgModule({

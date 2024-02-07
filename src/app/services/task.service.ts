@@ -20,7 +20,7 @@ export class TaskService {
 
   getAllTasks(): Observable<Task[]> {
     this.store.dispatch(TaskActions.loadAllTasks());
-    return this.http.get<Task[]>(`${this.apiUrl}/api/tass/all`);
+    return this.http.get<Task[]>(`${this.apiUrl}/api/tasks/all`);
   }
 
   addTask(task: Task): Observable<Task> {

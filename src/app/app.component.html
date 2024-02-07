@@ -1,6 +1,23 @@
-<app-navbar></app-navbar>
+<mat-drawer-container class="example-container">
+  <mat-toolbar color="primary">
+    <span class="app-title">Task Manager</span>
+    <span class="spacer"></span>
+    <div class="nav-links">
+      <a mat-button routerLink="/tasks" routerLinkActive="active-link" matTooltip="Tasks" matTooltipPosition="below">
+        <mat-icon class="nav-icon">assignment</mat-icon>
+        <span class="nav-label">Tasks</span>
+      </a>
+      <a mat-button routerLink="/users" routerLinkActive="active-link" matTooltip="Users" matTooltipPosition="below">
+        <mat-icon class="nav-icon">people</mat-icon>
+        <span class="nav-label">Users</span>
+      </a>
+      <a mat-button routerLink="/tags" routerLinkActive="active-link" matTooltip="Tags" matTooltipPosition="below">
+        <mat-icon class="nav-icon">label</mat-icon>
+        <span class="nav-label">Tags</span>
+      </a>
+    </div>
+  </mat-toolbar>
 
-<!-- Main content area -->
-<div class="main-content">
+  <!-- Your router-outlet content -->
   <router-outlet></router-outlet>
-</div>
+</mat-drawer-container>

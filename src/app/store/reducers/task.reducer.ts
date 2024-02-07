@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as TaskActions from '../actions/task.actions';
 import { Task } from '../../models/task';
-import { AppState } from '../app.state';
 
 export const initialState: Task[] = [];
 
@@ -13,5 +12,5 @@ export const taskReducer = createReducer(
 );
 
 export function taskReducerWrapper(state: Task[] | undefined, action: any) {
-  return taskReducer(state, action);
+  return taskReducer(state, action);  
 }
